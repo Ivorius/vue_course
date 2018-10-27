@@ -1,0 +1,59 @@
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+
+<div id="exercise">
+   <!-- 1) Fill the <p> below with your Name and Age - using Interpolation -->
+    <p>VueJS is pretty cool - {{name}} ({{age}})</p>
+    <!-- 2) Output your age, multiplied by 3 -->
+    <p>{{age*3}}</p>
+    <!-- 3) Call a function to output a random float between 0 and 1 (Math.random()) -->
+    <p>{{rand()}}</p>
+    <!-- 4) Search any image on Google and output it here by binding the "src" attribute -->
+    <div>
+        <img style="width:100px;height:100px" v-bind:src="image">
+    </div>
+    <!-- 5) Pre-Populate this input with your name (set the "value" attribute) -->
+    <div>
+        <input type="text" v-model="name">
+    </div>
+
+
+
+    <button v-on:click="increace(2,  $event)">click</button>
+    <p>{{counter}}</p>
+    <p v-on:mousemove="updateCoordinates">Coordinates {{ x }} - {{ y }}
+      - <span v-on:mousemove.stop="">DEAD SPOT</span>  <!--modifier  k zastavení propagation-->
+    </p>
+
+
+    <input type="text" v-on:keyup.enter.space="alertMe">
+</div>
+
+
+<script type="text/javascript">
+new Vue({
+  el: '#exercise',
+  data: {
+    name: 'Ivo Toman',
+    age: '33',
+    image: 'http://www.autoforum.cz/tmp/magazin/bc/BMW_i8_Policie_CR_Perex_503_0.jpg',
+    counter: 0,
+    x: 0,
+    y: 0,
+  },
+  methods: {
+    rand: function() {
+      return Math.random();
+    },
+    increace: function(step, event) {
+        this.counter += step;
+    },
+    updateCoordinates: function(event) {
+      this.x = event.clientX;
+      this.y = event.clientY;
+    },
+    alertMe: function() {
+      alert('Byl zmáčknut enter nebo mezera');
+    }
+  }
+});
+</script>

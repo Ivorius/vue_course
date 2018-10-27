@@ -1,0 +1,71 @@
+<script src="https://npmcdn.com/vue/dist/vue.js"></script>
+<style type="text/css">
+    .demo {
+      width:100px;
+      height: 100px;
+      background-color: gray;
+      display: inline-block;
+      margin: 10px;
+    }
+
+    .red {
+      background-color: red;
+    }
+
+    .green {
+      background-color: green;
+    }
+
+    .blue {
+      background-color: blue;
+    }
+</style>
+
+<div id="app">
+  <div
+    class="demo"
+    @click = "attachRed =! attachRed"
+    :class="{red: attachRed, blue: !attachRed}"></div>
+  <div
+    class="demo"
+    :class = "divClasses"></div>
+  <div class="demo" :class="colorClass"></div>
+  <div class="demo" :class="[colorClass, {red: attachRed}]"></div><br>
+  Zvolte CSS třídu (green, red, blue)
+  <input type="text" v-model="colorClass">
+    <hr>
+    <div class="demo" :style="{backgroundColor: color}"></div>
+    <div class="demo" :style="myStyle"></div>
+    <div class="demo" :style="[myStyle, {height: width + 'px'}]"></div><br>
+    Nastav barvu
+    <input type="text" v-model="color">
+    a velikost
+    <input type="text" v-model="width">
+</div>
+
+<script type="text/javascript">
+  new Vue({
+    el: '#app',
+    data: {
+      attachRed: false,
+      colorClass: 'green',
+      color: '#000',
+      width: 100
+    },
+    computed: {
+      divClasses: function() {
+        return {
+          red: this.attachRed,
+          blue: !this.attachRed
+        }
+      },
+      myStyle: function() {
+        return {
+          backgroundColor: this.color,
+          width: this.width + 'px'
+        }
+      }
+    }
+
+  });
+</script>

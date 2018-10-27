@@ -1,0 +1,39 @@
+<script src="https://npmcdn.com/vue/dist/vue.js"></script>
+
+
+<div id="app">
+  <p v-if="show">Tohle je vidět pokud je show true</p>
+  <p v-else>Tohle je vidět, pokud show není tru</p>
+
+  <p v-show="show">V-show jen schovává narozdíl od v-if</p>
+
+  <template v-if="show">
+    <h1>Tag tamplate</h1>
+    <p>Tag tamplate se nikde nerenderuje, ale lze na něj použit v-if apod.</p>
+  </template>
+  <button @click="show = !show">Přepínač viditelnosti</button>
+
+  <p v-if="color == 'green'" :style="{backgroundColor: color}">Je zelená</p>
+  <p v-else-if="color == 'blue'" :style="{backgroundColor: color}">Je modrá</p>
+  <p v-else>Je různobarevná</p>
+  <p>Barva je  {{color}}</p>
+  <button @click="switchColor">Přepni barvu</button>
+</div>
+
+
+<script type="text/javascript">
+new Vue({
+  el: '#app',
+  data: {
+    show: true,
+    color: 'multi'
+  },
+  methods: {
+    switchColor: function() {
+      var vu = this
+      var colors = ['blue', 'green', 'multi']
+      vu.color = colors[Math.floor(Math.random() * colors.length)];
+    }
+  }
+});
+</script>

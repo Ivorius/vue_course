@@ -1,0 +1,81 @@
+<script src="https://npmcdn.com/vue/dist/vue.js"></script>
+
+<div id="exercise">
+    <!-- 1) Show an alert when the Button gets clicked -->
+    <div>
+        <button v-on:click="showAlert">Show Alert</button>
+    </div>
+    <!-- 2) Listen to the "keydown" event and store the value in a data property (hint: event.target.value gives you the value) -->
+    <div>
+        <input type="text" v-on:keydown="showValue">
+        <p>{{ value }}</p>
+    </div>
+    <!-- 3) Adjust the example from 2) to only fire if the "key down" is the ENTER key -->
+    <div>
+        <input type="text" v-on:keydown.enter="showValue">
+        <p>{{ value }}</p>
+    </div>
+
+    <p>Moje jméno {{name}}, můžu si ho změnit zde  <input type="text" v-model="name"></p>
+</div>
+
+
+<div id="app">
+  <h2>Tohle je nová instance VUE</h2>
+  <button v-on:click="counter++">Zvětši</button>
+  <button v-on:click="counter--">Zmenši</button>
+  <button v-on:click="secondCounter++">Zvětši second</button>
+  <p>Counter je: {{counter}} a jeho výsledek: {{ result() }}</p>
+  <p>Druhý je {{secondCounter}}</p>
+    <p>{{ output }}</p>
+</div>
+
+<script type="text/javascript">
+
+new Vue({
+  el: '#app',
+  data: {
+    counter: 0,
+    secondCounter: 0
+  },
+  computed: {
+      output: function() {
+        //volá se pouze v případě, že je potřeba něco změnit na základě analýzy toho co obsahuje funcke
+        return this.counter > 5 ? 'První counter větší než 5' : 'První counter menší než 5';
+      }
+  },
+  watch: {
+    // může být asynchronní, tedy počkat na nějakou odpověď nebo čas a pak provede něco s property
+    counter: function(value) {
+        var vm = this;
+        setTimeout(function() {
+            vm.counter = 0;
+        }, 2000);
+    }
+  },
+  methods: {
+    result: function() {
+      return this.counter > 5 ? 'větší než 5' : 'menší než 5';
+    }
+  }
+});
+
+
+
+new Vue({
+        el: '#exercise',
+        data: {
+            value: '',
+            name: 'Ivo'
+        },
+        methods: {
+          showAlert: function() {
+            alert('Alert!');
+          },
+          showValue: function(event) {
+            this.value = event.target.value
+          }
+        }
+    });
+
+</script>

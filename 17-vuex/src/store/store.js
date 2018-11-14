@@ -8,6 +8,11 @@ import * as getters from './getters';
 
 Vue.use(Vuex);
 
+
+//Automatický namespacing pro moduly
+// https://metricloop.com/blog/how-to-migrate-to-vuexs-new-module-namespacing
+// https://vuex.vuejs.org/guide/modules.html#namespacing
+
 export const store = new Vuex.Store({
   state: {
     value: 0

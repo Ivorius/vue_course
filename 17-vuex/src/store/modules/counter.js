@@ -29,7 +29,7 @@ const actions = {
   //   context.commit('increment');
   // },
 
-  //nově es6
+  //nově es6 - vytáhne z celého objektu context pouze commit
   increment: ({commit}, payload) => {
     commit('increment', payload);
   },
@@ -50,6 +50,7 @@ const actions = {
 };
 
 export default {
+  namespaced: true,
   //state: state,
   state,
   mutations,

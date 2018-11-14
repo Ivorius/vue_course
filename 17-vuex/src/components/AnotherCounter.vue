@@ -16,7 +16,7 @@
           // },
 
           //automaticky pořeší mapAcctionss
-          ...mapActions([
+          ...mapActions('counter', [
             'asyncIncrement',
             'asyncDecrement'
           ])

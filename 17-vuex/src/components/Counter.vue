@@ -22,7 +22,7 @@
       // },
       //
       //nebo automaticky
-      ...mapMutations([
+      ...mapMutations('counter', [
         'increment',
         'decrement'
       ]),

@@ -7,10 +7,10 @@
         computed: {
           counter() {
             //pokud to je ve store.js
-            //return this.$store.state.counter;
+            //return this.$store.getters.counter;
 
             //pokud je to v modulu
-            return this.$store.getters.getCounter;
+            return this.$store.getters['counter/getCounter'];
           }
         }
     }

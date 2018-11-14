@@ -21,7 +21,7 @@
     //nebo použít helper z vuex
     computed: {
         //... spread operator
-        ...mapGetters([ //umožnuje použít i vlastní pojmenování z objektu
+        ...mapGetters('counter', [ //umožnuje použít i vlastní pojmenování z objektu
           'doubleCounter', 'stringCounter'
         ])
     }
